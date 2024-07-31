@@ -15,15 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        $userId = auth()->id();
-        $posts = Post::with('user')
-            ->where('user_id', $userId)
-            ->orderBy('created_at', 'desc')
-            ->get();
-
+        $posts = Post::byAuthUser()->get();
         return Inertia::render('Posts/index', [
-            'posts' => $posts
+            'initialPosts' => $posts
         ]);
+    }
+
+    public function getUserPosts()
+    {
+        return response()->json(Post::byAuthUser()->get());
     }
 
     public function getCreatePost()

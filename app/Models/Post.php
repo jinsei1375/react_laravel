@@ -19,4 +19,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeByAuthUser($query)
+    {
+        $userId = auth()->id();
+        return $query->with('user')
+                    ->where('user_id', $userId)
+                    ->orderBy('created_at', 'desc');
+    }
 }
