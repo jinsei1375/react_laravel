@@ -3,6 +3,9 @@ import axios from "axios";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PostList from "@/Components/PostList";
 import { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
+import { InertiaLink } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 
 const Index = ({ auth, initialPosts }) => {
     const [posts, setPosts] = useState(initialPosts);
@@ -46,9 +49,7 @@ const Index = ({ auth, initialPosts }) => {
                 <br />
                 <button onClick={fetchUserPosts}>自分の投稿を表示</button>
                 <br />
-                <button onClick={() => navigate("/posts/create")}>
-                    投稿追加
-                </button>
+                <Link href={route("create.post.get")}>投稿追加</Link>
             </div>
             {posts.length === 0 ? (
                 <div>投稿がありません</div>

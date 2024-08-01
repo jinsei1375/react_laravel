@@ -28,7 +28,7 @@ class PostController extends Controller
 
     public function getCreatePost()
     {
-        return Inertia::render('Posts/Create');
+        return Inertia::render('Posts/create');
     }
 
 
