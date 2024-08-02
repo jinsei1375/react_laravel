@@ -37,13 +37,17 @@ class PostController extends Controller
      */
     public function postCreatePost(Request $request)
     {
-        Post::create([
+        $newPost = Post::create([
             'user_id' => auth()->id(),
             'content' => $request->content
         ]);
 
         // 投稿一覧ページへリダイレクト
-        return redirect()->route('posts.index');
+        // return response()->json($newPost);
+        $posts = Post::byAuthUser()->get();
+        // return Inertia::render('Posts/index', [
+        //     'initialPosts' => $posts
+        // ]);
     }
 
     /**

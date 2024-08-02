@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PostList from "@/Components/PostList";
 import { useState } from "react";
-import { Inertia } from "@inertiajs/inertia";
-import { InertiaLink } from "@inertiajs/inertia-react";
 import { Link } from "@inertiajs/react";
 
 const Index = ({ auth, initialPosts }) => {
     const [posts, setPosts] = useState(initialPosts);
     console.log(posts);
-    const navigate = useNavigate();
 
     const fetchAllPosts = async () => {
         try {
