@@ -31,13 +31,10 @@ const Index = ({ auth, initialPosts }) => {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Post
+                    投稿一覧
                 </h2>
             }
         >
-            <div>
-                <h1>投稿一覧</h1>
-            </div>
             <div>
                 <button onClick={fetchAllPosts}>
                     他ユーザー含む全投稿を表示

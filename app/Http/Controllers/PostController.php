@@ -64,7 +64,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->load('user');
-        return Inertia::render('Posts/Show', [
+        return Inertia::render('Posts/show', [
             'post' => $post
         ]);
     }
@@ -94,7 +94,7 @@ class PostController extends Controller
         $post->delete();
 
         // onSuccessになるようレスポンス返す
-        return redirect()->route('posts.index');
+        return response()->json(['message' => 'Post deleted']);
     }
 
     public function allPosts()

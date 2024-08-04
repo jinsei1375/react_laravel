@@ -19,7 +19,7 @@ const create = ({ auth }) => {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Post
+                    投稿追加
                 </h2>
             }
         >
