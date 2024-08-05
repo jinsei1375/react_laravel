@@ -7,7 +7,7 @@ const PostList = ({ posts, auth }) => {
     return (
         <ul>
             {posts.map((post) => (
-                <li key={post.id}>
+                <li key={post.id} className="post-list">
                     {auth.user && post.user_id === auth.user.id ? (
                         <Link href={route("post.show.get", post.id)}>
                             ユーザー：{post.user.name}
