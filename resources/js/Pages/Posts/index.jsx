@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "@inertiajs/react";
 
 const Index = ({ auth, initialPosts }) => {
+    // 状態管理
     const [posts, setPosts] = useState(initialPosts);
     console.log(posts);
 
@@ -17,13 +18,10 @@ const Index = ({ auth, initialPosts }) => {
         }
     };
 
-    const fetchUserPosts = async () => {
-        try {
-            const response = await axios.get("/user-posts");
-            setPosts(response.data);
-        } catch (error) {
-            console.error(error);
-        }
+    // postsから自分の投稿のみを取得
+    const fetchMyPosts = async () => {
+        const userPosts = posts.filter((post) => post.user_id === auth.user.id);
+        setPosts(userPosts);
     };
 
     return (
@@ -40,7 +38,7 @@ const Index = ({ auth, initialPosts }) => {
                     他ユーザー含む全投稿を表示
                 </button>
                 <br />
-                <button onClick={fetchUserPosts}>自分の投稿を表示</button>
+                <button onClick={fetchMyPosts}>自分の投稿を表示</button>
                 <br />
                 <Link href={route("create.post.get")}>投稿追加</Link>
             </div>
