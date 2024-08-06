@@ -1,0 +1,19 @@
+.flash-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    color: #fff;
+    background-color: #f44336; /* 赤色の背景 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.5s;
+    z-index: 100;
+}
+
+.flash-message.fadeOut {
+    opacity: 0;
+}

@@ -112,4 +112,12 @@ class PostController extends Controller
 
         return response()->json(['message' => 'Test posts created']);
     }
+
+    public function postUpdatePost(Post $post, Request $request)
+    {
+        $post->content = $request->content;
+        $post->save();
+
+        return response()->json(['message' => 'Post updated']);
+    }
 }

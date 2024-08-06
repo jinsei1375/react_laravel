@@ -5,6 +5,8 @@ import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { BrowserRouter, Router } from "react-router-dom";
+import FlashMessage from "./Components/FlashMessage/FlashMessage";
+import { FlashMessageProvider } from "./Context/FlashMessageContext";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
@@ -20,7 +22,10 @@ createInertiaApp({
 
         root.render(
             <BrowserRouter>
-                <App {...props} />
+                <FlashMessageProvider>
+                    <FlashMessage />
+                    <App {...props} />
+                </FlashMessageProvider>
             </BrowserRouter>
         );
     },
