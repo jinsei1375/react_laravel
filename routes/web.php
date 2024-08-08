@@ -36,4 +36,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/create-test-posts', [PostController::class, 'createTestPosts']);
 
+Route::get('/not-spa', function () {
+    return view('not-spa');
+});
+
 require __DIR__.'/auth.php';
