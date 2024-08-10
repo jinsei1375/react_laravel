@@ -7,29 +7,36 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { BrowserRouter, Router } from "react-router-dom";
 import FlashMessage from "./Components/FlashMessage/FlashMessage";
 import { FlashMessageProvider } from "./Context/FlashMessageContext";
+import ExampleComponent from "./Components/ExampleComponent";
+import React from "react";
+import ReactDOM from "react-dom";
 
-const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+if (document.getElementById("example")) {
+    ReactDOM.render(<ExampleComponent />, document.getElementById("example"));
+} else {
+    const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
-createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) =>
-        resolvePageComponent(
-            `./Pages/${name}.jsx`,
-            import.meta.glob("./Pages/**/*.jsx")
-        ),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
+    createInertiaApp({
+        title: (title) => `${title} - ${appName}`,
+        resolve: (name) =>
+            resolvePageComponent(
+                `./Pages/${name}.jsx`,
+                import.meta.glob("./Pages/**/*.jsx")
+            ),
+        setup({ el, App, props }) {
+            const root = createRoot(el);
 
-        root.render(
-            <BrowserRouter>
-                <FlashMessageProvider>
-                    <FlashMessage />
-                    <App {...props} />
-                </FlashMessageProvider>
-            </BrowserRouter>
-        );
-    },
-    progress: {
-        color: "#4B5563",
-    },
-});
+            root.render(
+                <BrowserRouter>
+                    <FlashMessageProvider>
+                        <FlashMessage />
+                        <App {...props} />
+                    </FlashMessageProvider>
+                </BrowserRouter>
+            );
+        },
+        progress: {
+            color: "#4B5563",
+        },
+    });
+}

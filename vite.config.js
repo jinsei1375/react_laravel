@@ -16,4 +16,10 @@ export default defineConfig({
             "@": resolve(__dirname, "resources/js"),
         },
     },
+    build: {
+        outDir: "public/js",
+        rollupOptions: {
+            input: "resources/js/app.jsx",
+        },
+    },
 });
