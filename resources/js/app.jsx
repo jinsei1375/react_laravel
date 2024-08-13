@@ -12,8 +12,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 if (document.getElementById("example")) {
-    ReactDOM.render(<ExampleComponent />, document.getElementById("example"));
+    console.log("example");
+    container = document.getElementById("example");
+    const root = createRoot(container);
+    root.render(<ExampleComponent />);
 } else {
+    console.log("inertia");
     const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
     createInertiaApp({
