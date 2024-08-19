@@ -13,10 +13,9 @@ const show = ({ auth, post }) => {
     const handleDelete = async () => {
         if (confirm("削除しますか？")) {
             const response = await axios.post(`/delete-post/${post.id}`);
-            console.log(response);
             if (response.status === 200) {
-                showMessage("削除しました");
                 Inertia.visit("/posts");
+                showMessage("削除しました");
             }
         }
     };
@@ -30,7 +29,7 @@ const show = ({ auth, post }) => {
         console.log(response);
         if (response.status === 200) {
             showMessage("更新しました");
-            Inertia.visit(`/posts/`);
+            // Inertia.visit(`/posts/`);
         }
     };
 

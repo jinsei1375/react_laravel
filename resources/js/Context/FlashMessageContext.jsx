@@ -13,11 +13,11 @@ export const FlashMessageProvider = ({ children }) => {
             setFade(false);
             setTimeout(() => {
                 setFade(true);
-            }, 3000); // 5秒後にフェードアウト
+            }, 2000);
             setTimeout(() => {
                 setMessage(null);
                 sessionStorage.removeItem("flashMessage");
-            }, 5500); // 5.5秒後にメッセージを消す
+            }, 3000);
         }
     }, []);
 
@@ -27,11 +27,11 @@ export const FlashMessageProvider = ({ children }) => {
         sessionStorage.setItem("flashMessage", msg);
         setTimeout(() => {
             setFade(true);
-        }, 5000); // 5秒後にフェードアウト
+        }, 2000);
         setTimeout(() => {
             setMessage(null);
             sessionStorage.removeItem("flashMessage");
-        }, 6000); // 5.5秒後にメッセージを消す
+        }, 3000);
     };
 
     return (

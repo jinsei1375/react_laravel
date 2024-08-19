@@ -4,7 +4,6 @@ import React from "react";
 
 const FlashMessage = () => {
     const { message, fade } = useFlashMessage();
-    console.log(fade);
     if (!message) return null;
 
     return (
@@ -15,3 +14,22 @@ const FlashMessage = () => {
 };
 
 export default FlashMessage;
+
+// import React from "react";
+// import { usePage } from "@inertiajs/inertia-react";
+
+// const FlashMessage = () => {
+//     const { flashMessage } = usePage().props;
+
+//     if (!flashMessage) return null;
+
+//     return (
+//         <div
+//             className={`flash-message ${flashMessage ? "fade-in" : "fade-out"}`}
+//         >
+//             {flashMessage}
+//         </div>
+//     );
+// };
+
+// export default FlashMessage;

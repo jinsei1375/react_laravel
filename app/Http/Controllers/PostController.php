@@ -42,12 +42,10 @@ class PostController extends Controller
             'content' => $request->content
         ]);
 
-        // 投稿一覧ページへリダイレクト
-        // return response()->json($newPost);
-        $posts = Post::byAuthUser()->get();
-        // return Inertia::render('Posts/index', [
-        //     'initialPosts' => $posts
-        // ]);
+        $newPost->load('user');
+        // Inertia::render('Posts/show', ['post' => $newPost]);
+
+        return response()->json(['newPost' => $newPost]);
     }
 
     /**

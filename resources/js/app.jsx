@@ -7,7 +7,6 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { BrowserRouter, Router } from "react-router-dom";
 import FlashMessage from "./Components/FlashMessage/FlashMessage";
 import { FlashMessageProvider } from "./Context/FlashMessageContext";
-import ExampleComponent from "./Components/ExampleComponent";
 import React from "react";
 
 if (document.getElementById("example")) {

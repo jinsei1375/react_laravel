@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import axios from "axios";
 import { Inertia } from "@inertiajs/inertia";
+import { useFlashMessage } from "@/Context/FlashMessageContext";
 
 const create = ({ auth }) => {
     const [content, setContent] = useState("");
+    const { showMessage } = useFlashMessage();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("/create-post", {
+        const response = await axios.post("/create-post", {
             content: content,
         });
-        setContent("");
-        Inertia.visit("/posts");
+        const newPost = response.data.newPost;
+        console.log(response.data);
+        if (response.status === 200) {
+            setContent("");
+            Inertia.visit(`/post/${newPost.id}`);
+            showMessage("投稿しました");
+        }
     };
     return (
         <AuthenticatedLayout
