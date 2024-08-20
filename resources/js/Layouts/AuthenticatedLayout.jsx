@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import ShareFlashMessage from "@/Components/FlashMessage/ShareFlashMessage";
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -180,6 +181,7 @@ export default function Authenticated({ user, header, children }) {
             )}
 
             <main>{children}</main>
+            <ShareFlashMessage />
         </div>
     );
 }

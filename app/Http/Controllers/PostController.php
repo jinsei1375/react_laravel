@@ -116,6 +116,10 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return response()->json(['message' => 'Post updated']);
+        // dd($post);
+        // request()->session()->flash('message', 'Post updated successfully');
+        $request->session()->flash('message', '投稿が更新されました');
+        return redirect()->route('post.show.get', $post->id)->with('message', 'Post updated successfully');
+        // return response()->json(['message' => 'Post updated successfully']);
     }
 }

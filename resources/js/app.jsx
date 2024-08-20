@@ -8,6 +8,8 @@ import { BrowserRouter, Router } from "react-router-dom";
 import FlashMessage from "./Components/FlashMessage/FlashMessage";
 import { FlashMessageProvider } from "./Context/FlashMessageContext";
 import React from "react";
+import ShareFlashMessage from "./Components/FlashMessage/ShareFlashMessage";
+import { InertiaApp } from "@inertiajs/inertia-react";
 
 if (document.getElementById("example")) {
     console.log("example");
@@ -30,10 +32,10 @@ if (document.getElementById("example")) {
 
             root.render(
                 <BrowserRouter>
-                    <FlashMessageProvider>
-                        <FlashMessage />
-                        <App {...props} />
-                    </FlashMessageProvider>
+                    {/* <FlashMessageProvider> */}
+                    <App {...props} />
+                    {/* <FlashMessage /> */}
+                    {/* </FlashMessageProvider> */}
                 </BrowserRouter>
             );
         },
