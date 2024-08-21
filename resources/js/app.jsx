@@ -32,10 +32,10 @@ if (document.getElementById("example")) {
 
             root.render(
                 <BrowserRouter>
-                    {/* <FlashMessageProvider> */}
-                    <App {...props} />
-                    {/* <FlashMessage /> */}
-                    {/* </FlashMessageProvider> */}
+                    <FlashMessageProvider>
+                        <App {...props} />
+                        <FlashMessage />
+                    </FlashMessageProvider>
                 </BrowserRouter>
             );
         },

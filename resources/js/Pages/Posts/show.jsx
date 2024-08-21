@@ -41,7 +41,7 @@ const show = ({ auth, post }) => {
         if (response.status === 200) {
             // showMessage("更新しました");
             // Inertia.visit(`/posts/`);
-            console.log(props);
+            console.log(props.flash);
         }
     };
 

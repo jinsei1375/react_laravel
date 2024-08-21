@@ -17,3 +17,16 @@
 .flash-message.fadeOut {
     opacity: 0;
 }
+
+.fadeOut {
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
