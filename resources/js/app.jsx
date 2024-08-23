@@ -8,16 +8,11 @@ import { BrowserRouter, Router } from "react-router-dom";
 import FlashMessage from "./Components/FlashMessage/FlashMessage";
 import { FlashMessageProvider } from "./Context/FlashMessageContext";
 import React from "react";
-import ShareFlashMessage from "./Components/FlashMessage/ShareFlashMessage";
 import { InertiaApp } from "@inertiajs/inertia-react";
 
 if (document.getElementById("example")) {
     console.log("example");
-    // const container = document.getElementById("example");
-    // const root = createRoot(container);
-    // root.render(<ExampleComponent />);
 } else {
-    console.log("inertia");
     const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
     createInertiaApp({

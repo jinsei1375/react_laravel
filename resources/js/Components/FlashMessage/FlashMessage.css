@@ -6,7 +6,6 @@
     padding: 10px;
     margin: 0;
     color: #fff;
-    background-color: #f44336; /* 赤色の背景 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 16px;
     text-align: center;
@@ -14,12 +13,16 @@
     z-index: 100;
 }
 
-.flash-message.fadeOut {
-    opacity: 0;
+.flash-message.success {
+    background-color: #4caf50; /* 緑色の背景 */
 }
 
-.fadeOut {
-    animation: fadeOut 3s forwards;
+.flash-message.error {
+    background-color: #f44336; /* 赤色の背景 */
+}
+
+.flash-message.fadeOut {
+    animation: fadeOut 5s forwards;
 }
 
 @keyframes fadeOut {
@@ -28,5 +31,6 @@
     }
     to {
         opacity: 0;
+        display: none;
     }
 }

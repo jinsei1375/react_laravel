@@ -1,21 +1,23 @@
-// Inertia::shareを使った場合
-import React from "react";
+import React, { useEffect } from "react";
 import { usePage } from "@inertiajs/react";
-// import "./FlashMessage.css";
+import useFlashMessage from "@/Utils/flashMessage";
+import "./FlashMessage.css";
 
 const ShareFlashMessage = () => {
+    const { message, type, visible, showFlashMessage } = useFlashMessage();
     const { flash } = usePage().props;
-    const props = usePage().props;
 
-    console.log(props); // ここでflashオブジェクトを確認
+    useEffect(() => {
+        console.log(flash);
+        if (flash.message) {
+            console.log("flash.message exists");
+            showFlashMessage(flash.message, "success");
+        }
+    }, [flash, showFlashMessage]);
 
-    if (!flash.message) return null;
+    if (!visible) return null;
 
-    return (
-        <div className={`flash-message ${flash.message ? "fadeOut" : ""}`}>
-            {flash.message}
-        </div>
-    );
+    return <div className={`flash-message ${type}`}>{message}</div>;
 };
 
 export default ShareFlashMessage;

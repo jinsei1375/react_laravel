@@ -3,19 +3,11 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link, usePage } from "@inertiajs/react";
 import axios from "axios";
 import { Inertia } from "@inertiajs/inertia";
-import { useFlashMessage } from "@/Context/FlashMessageContext";
+import useFlashMessage from "@/Utils/flashMessage";
 
 const show = ({ auth, post }) => {
-    const { props } = usePage();
     const [content, setContent] = React.useState(post.content);
-    // const { showMessage } = useFlashMessage();
-
-    useEffect(() => {
-        console.log(props); // ここでpropsの内容を確認
-        if (props.flash) {
-            console.log(props.flash);
-        }
-    }, [props.flash]);
+    const { showFlashMessage } = useFlashMessage();
 
     // 削除処理
     const handleDelete = async () => {
@@ -23,7 +15,6 @@ const show = ({ auth, post }) => {
             const response = await axios.post(`/delete-post/${post.id}`);
             if (response.status === 200) {
                 Inertia.visit("/posts");
-                // showMessage("削除しました");
             }
         }
     };
@@ -31,17 +22,14 @@ const show = ({ auth, post }) => {
     // 更新処理
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const response = await axios.post(`/update-post/${post.id}`, {
-        //     content,
-        // });
         const response = await axios.post(`/update-post/${post.id}`, {
             content,
         });
-        // console.log(response.data);
         if (response.status === 200) {
-            // showMessage("更新しました");
-            // Inertia.visit(`/posts/`);
-            console.log(props.flash);
+            console.log(response);
+            showFlashMessage("更新しました");
+            // Inertia.visit(`/post/${post.id}`);
+            console.log("更新しました");
         }
     };
 
